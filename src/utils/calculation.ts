@@ -17,8 +17,6 @@
 // 1,725 — активные люди: интенсивные нагрузки, занятия 6-7 раз в неделю;
 // 1,9 — спортсмены и люди, выполняющие сходные нагрузки, например, те, кто занимается тяжелой атлетикой или другими силовыми видами спорта с ежедневными тренироваками, а также те, кто выполняет тяжелую физическую работу: 6-7 раз в неделю.
 
-
-
 // Формула Харриса-Бенедикта
 // Впервые о формуле Харриса-Бенедикта написали в 1919 году. Работа была опубликована Институтом Карнеги в Вашингтоне и называлась «Биометрические исследования основного обмена человека».
 
@@ -37,7 +35,7 @@
 // Активные люди: интенсивные нагрузки, занятия 6-7 раз в неделю — 1,725;
 // Спортсмены и люди, выполняющие сходные нагрузки: 6-7 раз в неделю — 1,9.
 
-// Посчитайте свою норму калорий, умножив данные: BMR (базальный метаболизм) * AMR (активный метаболизм).   
+// Посчитайте свою норму калорий, умножив данные: BMR (базальный метаболизм) * AMR (активный метаболизм).
 
 // чттобы сбросить делаем дефицит калорий - 20% урезаем от нормы
 // чтобы набрать - +16% калорий от нормы
@@ -45,36 +43,53 @@
 type ActivityType = 1.2 | 1.375 | 1.55 | 1.725 | 1.9;
 
 type InputProps = {
-    activity: ActivityType;
-    weight: number;
-    height: number;
-    age: number;
-    sex: 'male' | 'female';    
-}
+  activity: ActivityType;
+  weight: number;
+  height: number;
+  age: number;
+  sex: "male" | "female";
+};
 
 type MifflinFunction = (params: InputProps) => number;
 
-export const calculateMifflin: MifflinFunction = ({ weight, height, activity, age, sex }) => {
-    const sexDiff = sex === 'female' ? -161 : 5;
-    const calories = (10 * weight + 6.25 * height - 5 * age + sexDiff) * activity;
-    return calories
-}
+export const calculateMifflin: MifflinFunction = ({
+  weight,
+  height,
+  activity,
+  age,
+  sex,
+}) => {
+  const sexDiff = sex === "female" ? -161 : 5;
+  const calories = (10 * weight + 6.25 * height - 5 * age + sexDiff) * activity;
+  return calories;
+};
 
 type HarrisFuntion = (params: InputProps) => number;
 
-export const calculateHarris: HarrisFuntion = ({ weight, height, activity, age, sex }) => {
-    const ratio = sex === 'female' ? 447.593 : 88.362;
-    const weightRatio = sex === 'female' ? 9.247 : 13.397;
-    const heightRatio = sex === 'female' ? 3.098 : 4.799 ;
-    const ageRatio = sex === 'female' ? 4.330 : 5.677;
+export const calculateHarris: HarrisFuntion = ({
+  weight,
+  height,
+  activity,
+  age,
+  sex,
+}) => {
+  const ratio = sex === "female" ? 447.593 : 88.362;
+  const weightRatio = sex === "female" ? 9.247 : 13.397;
+  const heightRatio = sex === "female" ? 3.098 : 4.799;
+  const ageRatio = sex === "female" ? 4.33 : 5.677;
 
-    const bmr = ratio + weightRatio*weight + heightRatio*height - ageRatio*age;
-    const amr = activity;
+  const bmr =
+    ratio + weightRatio * weight + heightRatio * height - ageRatio * age;
+  const amr = activity;
 
-    const calories = bmr * amr;
-    return calories
-}
+  const calories = bmr * amr;
+  return calories;
+};
 
-export const calculateCalories = (params:{mode:'harris' | 'mifflin';}&InputProps):number=>{
-    return params.mode==='mifflin'?calculateMifflin(params):calculateHarris(params);
-}
+export const calculateCalories = (
+  params: { mode: "harris" | "mifflin" } & InputProps,
+): number => {
+  return params.mode === "mifflin"
+    ? calculateMifflin(params)
+    : calculateHarris(params);
+};
