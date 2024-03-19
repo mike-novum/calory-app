@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/css": "^11.11.2",
-    "@emotion/react": "^11.11.3",
     "effector": "^23.2.0",
     "effector-react": "^23.2.0",
     "react": "^18.2.0",
