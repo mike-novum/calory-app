@@ -1,14 +1,22 @@
-type ActivityType = 1.2 | 1.375 | 1.55 | 1.725 | 1.9;
+import { ActivityType, Mode, SexType } from "./types";
 
 type InputProps = {
   activity: ActivityType;
   weight: number;
   height: number;
   age: number;
-  sex: "male" | "female";
+  sex: SexType;
 };
 
-type MifflinFunction = (params: InputProps) => number;
+type CalcFunction = (params: InputProps) => number;
+
+type MifflinFunction = CalcFunction;
+
+type HarrisFuntion = CalcFunction;
+
+type CalculateCaloriesFunction = (
+  params: { mode: Mode } & InputProps,
+) => number;
 
 export const calculateMifflin: MifflinFunction = ({
   weight,
@@ -21,8 +29,6 @@ export const calculateMifflin: MifflinFunction = ({
   const calories = (10 * weight + 6.25 * height - 5 * age + sexDiff) * activity;
   return calories;
 };
-
-type HarrisFuntion = (params: InputProps) => number;
 
 export const calculateHarris: HarrisFuntion = ({
   weight,
@@ -44,9 +50,7 @@ export const calculateHarris: HarrisFuntion = ({
   return calories;
 };
 
-export const calculateCalories = (
-  params: { mode: "harris" | "mifflin" } & InputProps,
-): number => {
+export const calculateCalories: CalculateCaloriesFunction = (params) => {
   return params.mode === "mifflin"
     ? calculateMifflin(params)
     : calculateHarris(params);
