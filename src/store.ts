@@ -1,11 +1,8 @@
 import { createEvent, createStore } from 'effector';
 import { calculateHarris, calculateMifflin } from './lib/calculation';
+import { ActivityType, GoalType, Mode, SexType } from './types';
 
-export type ActivityType = 1.2 | 1.375 | 1.55 | 1.725 | 1.9;
 
-type SexType = 'male' | 'female';
-
-type Mode = 'harris' | 'mifflin';
 
 export type CaloryStore = {
     activity: ActivityType;
@@ -13,7 +10,8 @@ export type CaloryStore = {
     height: number;
     age: number;
     sex: SexType;
-    mode:'harris' | 'mifflin';
+    mode:Mode;
+    goal:GoalType;
 };
 
 export const changedAge = createEvent<number>();
@@ -22,14 +20,16 @@ export const changedWeight = createEvent<number>();
 export const changedSex = createEvent<SexType>();
 export const changedActivity = createEvent<ActivityType>();
 export const changedMode = createEvent<Mode>();
+export const changedGoal = createEvent<GoalType>();
 
 export const $caloryStore = createStore<CaloryStore>({
     activity: 1.2,
-    weight: 0,
-    height: 0,
-    age: 0,
+    weight: 60,
+    height: 180,
+    age: 20,
     sex: 'female',
-    mode:'mifflin'
+    mode:'mifflin',
+    goal:'save'
 })
 .on(changedActivity, (store, activity) => ({
     ...store,
@@ -54,7 +54,23 @@ export const $caloryStore = createStore<CaloryStore>({
 .on(changedMode, (store, mode) => ({
     ...store,
     mode,
+}))
+.on(changedGoal, (store, goal) => ({
+    ...store,
+    goal,
 }));
 
+export const $calories = $caloryStore.map((store) =>{
+    const result = store.mode==='mifflin'?calculateMifflin(store): calculateHarris(store);
 
-export const $calories = $caloryStore.map((store) =>store.mode==='mifflin'?calculateMifflin(store): calculateHarris(store));
+    if(store.goal==='down'){
+        return result*0.8;
+    }
+
+    if(store.goal==='up'){
+        return result*1.16;
+    }
+
+
+    return result;
+});
