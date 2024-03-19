@@ -1,10 +1,13 @@
 import { FC } from "react";
 import { Button, Label, Wrapper } from "../../../ui";
-import { activityList } from "../../../utils/constants";
-import { useActivity } from "../../../store";
+import { FemaleActivityList, MaleActivityList } from "../../../utils/constants";
+import { useActivity, useSex } from "../../../store";
 
 export const ActivityPicker: FC = () => {
   const [activity, setActivity] = useActivity();
+
+  const [sex] = useSex();
+  const activityList = sex == "male" ? MaleActivityList : FemaleActivityList;
 
   return (
     <>

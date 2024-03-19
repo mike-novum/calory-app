@@ -1,11 +1,14 @@
 import { FC } from "react";
 import { Button, Label, Wrapper } from "../../../ui";
 
-import { goals } from "../../../utils/constants";
-import { useGoal } from "../../../store";
+import { FemaleGoals, MaleGoals } from "../../../utils/constants";
+import { useGoal, useSex } from "../../../store";
 
 export const GoalPicker: FC = () => {
   const [goal, setGoal] = useGoal();
+  const [sex] = useSex();
+
+  const goals = sex === "male" ? MaleGoals : FemaleGoals;
 
   return (
     <>
