@@ -18,6 +18,9 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    background-color: #2b2b2b;
+    padding: 16px;
+    border-radius:16px;
     gap: 8px;
 `
 
@@ -81,17 +84,18 @@ export const Form: FC = () => {
                     changedSex('male')
                 }}>Мужлан</Button>
             </Wrapper>
-            <Wrapper style={{marginTop:12}}>
+            <Label>Параметры тела</Label>
+            <Wrapper>
                 <Field>
-                    <Label>Возраст</Label>
+                    <Label style={{marginTop:0}}>Возраст</Label>
                     <Input type="number" value={store.age} onChange={(e)=>changedAge(+e.target.value)} placeholder="Возраст"/>
                 </Field>
                 <Field>
-                    <Label>Рост {store.sex==='male' && '(не члена)'}</Label>
+                    <Label style={{marginTop:0}}>Рост {store.sex==='male' && '(не члена)'}</Label>
                     <Input type="number" value={store.height} onChange={(e)=>changedHeight(+e.target.value)} placeholder="Укажи рост"/>
                 </Field>
                 <Field>
-                    <Label>Вес</Label>
+                    <Label  style={{marginTop:0}}>Вес</Label>
                     <Input type="number" value={store.weight} onChange={(e)=>changedWeight(+e.target.value)} placeholder="Ахах на весы встань"/>
                 </Field>
             </Wrapper>
