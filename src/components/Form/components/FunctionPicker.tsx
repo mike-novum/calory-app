@@ -5,8 +5,6 @@ import { useMode } from "../../../store";
 export const FunctionPicker: FC = () => {
   const [mode, setMode] = useMode();
 
-  ("Render");
-
   return (
     <>
       <Label>Формула рассчета (это для умных):</Label>

@@ -5,8 +5,6 @@ import { useSex } from "../../../store";
 export const SexPicker: FC = () => {
   const [sex, setSex] = useSex();
 
-  ("Render");
-
   return (
     <>
       <Label>Пол</Label>
