@@ -16,6 +16,7 @@ export const ActivityPicker: FC = () => {
         {activityList.map((item) => {
           return (
             <Button
+              aria-label={item.title}
               $isActive={activity === item.activity}
               key={item.activity}
               onClick={() => {

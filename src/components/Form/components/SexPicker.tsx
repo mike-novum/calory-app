@@ -10,6 +10,7 @@ export const SexPicker: FC = () => {
       <Label>Пол</Label>
       <Wrapper style={{ flexWrap: "nowrap" }}>
         <Button
+          aria-label="Посудомойка"
           $isActive={sex === "female"}
           onClick={() => {
             setSex("female");
@@ -18,6 +19,7 @@ export const SexPicker: FC = () => {
           Посудомойка
         </Button>
         <Button
+          aria-label="Мужлан"
           $isActive={sex === "male"}
           onClick={() => {
             setSex("male");

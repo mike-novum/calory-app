@@ -8,4 +8,8 @@ export const Field = styled.fieldset`
   padding: 0;
   margin: 0;
   border: none;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `;

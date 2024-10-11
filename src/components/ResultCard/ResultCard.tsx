@@ -11,6 +11,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #f1f1f1;
+  }
 `;
 
 const Header = styled.h2`
@@ -22,10 +26,18 @@ const ResultText = styled.p`
   font-weight: 700;
   font-size: 32px;
   color: #2dffc4;
+
+  @media (prefers-color-scheme: light) {
+    color: #1ac696;
+  }
 `;
 const CalText = styled.span`
   color: #ffffff;
   font-size: 20px;
+
+  @media (prefers-color-scheme: light) {
+    color: #2b3b48;
+  }
 `;
 
 export const ResultCard: FC = () => {
