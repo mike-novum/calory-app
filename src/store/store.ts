@@ -12,9 +12,9 @@ import {
 
 export type CaloryStore = {
   activity: ActivityType;
-  weight: number;
-  height: number;
-  age: number;
+  weight: number | string;
+  height: number | string;
+  age: number | string;
   sex: SexType;
   mode: Mode;
   goal: GoalType;

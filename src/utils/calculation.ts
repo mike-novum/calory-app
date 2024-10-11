@@ -2,9 +2,9 @@ import { ActivityType, Mode, SexType } from "./types";
 
 type InputProps = {
   activity: ActivityType;
-  weight: number;
-  height: number;
-  age: number;
+  weight: number | string;
+  height: number | string;
+  age: number | string;
   sex: SexType;
 };
 
@@ -26,7 +26,9 @@ export const calculateMifflin: MifflinFunction = ({
   sex,
 }) => {
   const sexDiff = sex === "female" ? -161 : 5;
-  const calories = (10 * weight + 6.25 * height - 5 * age + sexDiff) * activity;
+  const calories =
+    (10 * Number(weight) + 6.25 * Number(height) - 5 * Number(age) + sexDiff) *
+    activity;
   return calories;
 };
 
@@ -43,7 +45,10 @@ export const calculateHarris: HarrisFuntion = ({
   const ageRatio = sex === "female" ? 4.33 : 5.677;
 
   const bmr =
-    ratio + weightRatio * weight + heightRatio * height - ageRatio * age;
+    ratio +
+    weightRatio * Number(weight) +
+    heightRatio * Number(height) -
+    ageRatio * Number(age);
   const amr = activity;
 
   const calories = bmr * amr;

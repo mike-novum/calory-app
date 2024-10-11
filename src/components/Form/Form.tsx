@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import { FC } from "react";
 
 import { Container } from "./ui";
