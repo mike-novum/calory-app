@@ -15,10 +15,26 @@ const Container = styled.div`
   @media (prefers-color-scheme: light) {
     background-color: #f1f1f1;
   }
+
+  @media (max-width: 1024px) {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
 `;
 
 const Header = styled.h2`
   margin: 0px;
+`;
+
+const EmptyBlock = styled.div`
+  height: 0px;
+  @media (max-width: 1024px) {
+    height: 128px;
+  }
 `;
 
 const ResultText = styled.p`
@@ -31,6 +47,7 @@ const ResultText = styled.p`
     color: #1ac696;
   }
 `;
+
 const CalText = styled.span`
   color: #ffffff;
   font-size: 20px;
@@ -44,11 +61,14 @@ export const ResultCard: FC = () => {
   const calories = useCalories();
 
   return (
-    <Container>
-      <Header>Сколько нужно тебе хавать</Header>
-      <ResultText>
-        {Math.round(calories)} <CalText>ккал</CalText>
-      </ResultText>
-    </Container>
+    <>
+      <EmptyBlock />
+      <Container>
+        <Header>Сколько нужно тебе хавать</Header>
+        <ResultText>
+          {Math.round(calories)} <CalText>ккал</CalText>
+        </ResultText>
+      </Container>
+    </>
   );
 };
