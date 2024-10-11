@@ -10,4 +10,8 @@ export const Wrapper = styled.div`
   padding: 16px;
   border-radius: 16px;
   gap: 8px;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #f1f1f1;
+  }
 `;

@@ -16,9 +16,10 @@ export const BodyParamsPicker: FC = () => {
         <Field>
           <Label style={{ marginTop: 0 }}>Возраст</Label>
           <Input
+            name="test"
             type="number"
             value={age}
-            onChange={(e) => changedAge(+e.target.value)}
+            onChange={(e) => changedAge(e.target.value)}
             placeholder="Возраст"
           />
         </Field>
@@ -29,7 +30,7 @@ export const BodyParamsPicker: FC = () => {
           <Input
             type="number"
             value={height}
-            onChange={(e) => changedHeight(+e.target.value)}
+            onChange={(e) => changedHeight(e.target.value)}
             placeholder="Укажи рост"
           />
         </Field>
@@ -38,7 +39,7 @@ export const BodyParamsPicker: FC = () => {
           <Input
             type="number"
             value={weight}
-            onChange={(e) => changedWeight(+e.target.value)}
+            onChange={(e) => changedWeight(e.target.value)}
             placeholder="Ахах на весы встань"
           />
         </Field>

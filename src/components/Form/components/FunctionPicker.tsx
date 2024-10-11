@@ -10,6 +10,7 @@ export const FunctionPicker: FC = () => {
       <Label>Формула рассчета (это для умных):</Label>
       <Wrapper>
         <Button
+          aria-label="harris"
           $isActive={mode === "harris"}
           onClick={() => {
             setMode("harris");
@@ -18,6 +19,7 @@ export const FunctionPicker: FC = () => {
           harris
         </Button>
         <Button
+          aria-label="Mifflin"
           $isActive={mode === "mifflin"}
           onClick={() => {
             setMode("mifflin");

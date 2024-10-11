@@ -7,28 +7,43 @@ export const Button = styled.button<{ $isActive?: boolean }>`
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.25s;
-
-  transition: 200ms;
-  outline-color: rgb(45, 255, 196);
+  transition: 200ms box-shadow;
+  background-color: ${(props) => (props.$isActive ? "#1ac696" : "#1a1a1a")};
 
   &:active {
+    opacity: 0.7;
   }
+
   &:hover {
-    border-color: #2dffc4;
     -webkit-box-shadow: 0px 0px 118px 7px rgba(45, 255, 196, 0.26);
     -moz-box-shadow: 0px 0px 118px 7px rgba(45, 255, 196, 0.26);
     box-shadow: 0px 0px 118px 7px rgba(45, 255, 196, 0.26);
+    background-color: ${(props) => (props.$isActive ? "#28d2a2" : "#202020")};
   }
 
-  &:focus,
   &:focus-visible {
-    outline: 4px auto #2dffc4;
+    outline-style: solid;
+    outline-offset: 0px;
+    outline-color: #2dffc4;
+    outline-width: 2px;
   }
 
-  background-color: ${(props) => (props.$isActive ? "#1ac696" : undefined)};
+  @media (prefers-color-scheme: light) {
+    background-color: ${(props) => (props.$isActive ? "#1ac696" : "#e1e1e1")};
+    color: ${(props) => (props.$isActive ? "#ffffff" : "#213547")};
+
+    &:focus-visible {
+      outline-color: #75d5bb;
+    }
+    &:hover {
+      background-color: ${(props) => (props.$isActive ? "#28d2a2" : "#e4e4e4")};
+    }
+    &:active {
+      background-color: ${(props) => (props.$isActive ? "#1cb68b" : "#dadada")};
+    }
+  }
 
   @media (max-width: 768px) {
     width: 100%;

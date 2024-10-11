@@ -17,6 +17,7 @@ export const GoalPicker: FC = () => {
         {goals.map((item) => {
           return (
             <Button
+              aria-label={item.title}
               $isActive={goal === item.value}
               key={item.value}
               onClick={() => {
