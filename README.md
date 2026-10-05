@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Calory App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646cff?logo=vite&logoColor=white)
+![Effector](https://img.shields.io/badge/Effector-23-7f00ff?logo=effector&logoColor=white)
+![styled-components](https://img.shields.io/badge/styled--components-6-db7093?logo=styled-components&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Минималистичный калькулятор калорий на день по двум классическим формулам —
+**Миффлина-Сан Жеора** и **Харриса-Бенедикта**. Вводишь пол, возраст, рост, вес,
+уровень активности и цель — получаешь дневную норму калорий и распределение по
+БЖУ.
 
-- Configure the top-level `parserOptions` property like this:
+![Desktop](./screenshots/desktop.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Возможности
+
+- Две формулы расчёта на выбор
+- Учёт пола, возраста, роста, веса и уровня физической активности
+- Цель: сохранить вес, похудеть или набрать массу
+- Распределение калорий по белкам / жирам / углеводам
+- Адаптивная вёрстка под десктоп и мобильные устройства
+
+## Запуск
+
+```bash
+# установка зависимостей
+npm install
+
+# dev-сервер с HMR на http://localhost:5173
+npm run dev
+
+# прод-сборка в ./dist
+npm run build
+
+# локальный просмотр собранного бандла
+npm run preview
+
+# линтер
+npm run lint
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
